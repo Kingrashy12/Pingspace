@@ -51,7 +51,7 @@ const useAuth = () => {
   const login = async (authData) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${BASE_URL}/users/login`, {
+      const response = await axios.post(`${BASE_URL}/auth/login`, {
         email: authData().email,
         password: authData().password,
       });
@@ -92,7 +92,7 @@ const useAuth = () => {
   const register = async (authData) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${BASE_URL}/users/new`, {
+      const response = await axios.post(`${BASE_URL}/auth/new`, {
         name: authData().name,
         username: authData().username,
         email: authData().email,
