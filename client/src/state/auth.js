@@ -1,7 +1,7 @@
 import { createEffect, createSignal, onCleanup } from "solid-js";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import { LOCAL_URL } from "../constant/url";
+import { BASE_URL, LOCAL_URL } from "../constant/url";
 import { useToast } from "../libs/components/ToastContainer";
 import { useNavigate } from "@solidjs/router";
 
@@ -51,7 +51,7 @@ const useAuth = () => {
   const login = async (authData) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${LOCAL_URL}/users/login`, {
+      const response = await axios.post(`${BASE_URL}/users/login`, {
         email: authData().email,
         password: authData().password,
       });
@@ -92,7 +92,7 @@ const useAuth = () => {
   const register = async (authData) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${LOCAL_URL}/users/new`, {
+      const response = await axios.post(`${BASE_URL}/users/new`, {
         name: authData().name,
         username: authData().username,
         email: authData().email,

@@ -21,8 +21,7 @@ function App() {
         <Route path="/login" component={<Login />} />
         <Route path="/register" component={<Register />} />
       </Routes>
-      {/* {path.pathname === "/login" ? "" : <BottomNav />} */}
-      <BottomNav />
+      {path.pathname === "/login" ? "" : <BottomNav />}
     </div>
   );
 }
