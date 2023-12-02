@@ -1,0 +1,18 @@
+.loader {
+  animation: load 1s infinite linear;
+}
+
+@keyframes load {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
