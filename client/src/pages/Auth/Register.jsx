@@ -23,8 +23,11 @@ const Register = () => {
   });
 
   createEffect(() => {
-    console.log("data:", authData());
-  }, [authData()]);
+    actions.loadUser();
+    if (state().token) {
+      navigate("/people");
+    }
+  });
 
   function saveUser() {
     actions.register(authData);

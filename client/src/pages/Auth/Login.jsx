@@ -1,11 +1,9 @@
 import React from "react";
 import { createEffect, createSignal } from "solid-js";
 import { Button, Input, PasswordInput } from "../../libs";
-import { FaSolidMessage } from "solid-icons/fa";
-import { PingLogo } from "../../components";
-import { useLocation, useNavigate } from "@solidjs/router";
 import useAuth from "../../state/auth";
 import { pageName } from "../../libs/functions/functions";
+import { useNavigate } from "@solidjs/router";
 
 const Login = () => {
   createEffect(() => {
@@ -13,7 +11,7 @@ const Login = () => {
   });
 
   const { state, actions, Loading } = useAuth();
-  const isLoading = Loading();
+  const [isLoading, setIsLoading] = createSignal(Loading);
 
   const [authData, setAuthData] = createSignal({
     email: "",
@@ -21,31 +19,30 @@ const Login = () => {
   });
 
   createEffect(() => {
-    console.log("data:", authData());
-  }, [authData()]);
+    actions.loadUser();
+    if (state().token) {
+      navigate("/people");
+    }
+  });
 
   const navigate = useNavigate();
+  function login() {
+    actions.login(authData);
+  }
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      actions.login(authData);
+      login();
     }
   };
 
-  // Add event listener on component mount
   createEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
-    console.log("Loading:", Loading());
 
-    // Cleanup to remove the event listener on component unmount
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
   });
-
-  function login() {
-    actions.login(authData);
-  }
 
   return (
     <div className="flex flex-col w-full h-auto relative p-20 items-center justify-center">
@@ -74,12 +71,12 @@ const Login = () => {
             Don't have an account?
           </p>
           <Button
-            text="Login"
+            text={isLoading() ? "Loading..." : "Login"}
             onClick={login}
             secondary
             fitContent
-            disabled={isLoading}
-            isLoading={isLoading}
+            // disabled={isLoading()}
+            // isLoading={Loading()}
           />
         </div>
       </div>

@@ -15,6 +15,7 @@ const BottomNav = () => {
       } justify-between p-3 pl-5 pr-5 fixed bottom-0 w-full bg-black`}
     >
       <div
+        onClick={() => navigate("/people")}
         className={`flex flex-col items-center ${
           path.pathname === "/people" ? "text-blue-600" : "text-white"
         }`}
@@ -23,6 +24,7 @@ const BottomNav = () => {
         <p className="font-kanit text-[13px]">People</p>
       </div>
       <div
+        onClick={() => navigate("/group")}
         className={`flex flex-col items-center ${
           path.pathname === "/group" ? "text-blue-600" : "text-white"
         }`}
@@ -31,6 +33,7 @@ const BottomNav = () => {
         <p className="font-kanit text-[13px]">Group</p>
       </div>
       <div
+        onClick={() => navigate("/chat")}
         className={`flex flex-col items-center ${
           path.pathname === "/chat" ? "text-blue-600" : "text-white"
         }`}
@@ -39,6 +42,7 @@ const BottomNav = () => {
         <p className="font-kanit text-[13px]">Chat</p>
       </div>
       <div
+        onClick={() => navigate("/profile")}
         className={`flex flex-col items-center ${
           path.pathname === "/profile" ? "text-blue-600" : "text-white"
         }`}

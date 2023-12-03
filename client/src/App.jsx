@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate, useLocation } from "@solidjs/router";
-import { Login, People, Register } from "./pages";
+import { Account, Login, People, Register } from "./pages";
 import "./App.css";
 import { createEffect } from "solid-js";
 import useAuth from "./state/auth";
@@ -7,11 +7,17 @@ import { useToast } from "./libs/components/ToastContainer";
 import { BottomNav, SideNav } from "./components";
 
 function App() {
-  const { actions } = useAuth();
+  const { actions, state } = useAuth();
   const path = useLocation();
+  const navigate = useNavigate();
 
   createEffect(() => {
     actions.loadUser();
+    if (state().token) {
+      navigate("/people");
+    } else {
+      navigate("/login");
+    }
   });
 
   return (
@@ -20,6 +26,7 @@ function App() {
         <Route path="/people" component={<People />} />
         <Route path="/login" component={<Login />} />
         <Route path="/register" component={<Register />} />
+        <Route path="/profile" component={<Account />} />
       </Routes>
       {path.pathname === "/login" ? "" : <BottomNav />}
     </div>

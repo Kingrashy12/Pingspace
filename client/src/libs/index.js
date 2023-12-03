@@ -6,3 +6,5 @@ export { default as Loader } from "./components/Loader";
 export { default as PasswordStrength } from "./components/PasswordStrength";
 export { default as ToastAlert } from "./components/ToastAlert";
 export { default as styled } from "./components/Styled";
+export { default as CenterLoader } from "./components/CenterLoader";
+export { default as BottomDivider } from "./components/BottomDivider";

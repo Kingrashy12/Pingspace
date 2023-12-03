@@ -7,14 +7,10 @@ import { useLocation } from "@solidjs/router";
 
 const SideNav = () => {
   const { actions } = useAuth();
-  const path = useLocation();
-  const notHome = path.pathname.includes("login");
 
   return (
     <div
-      className={`${
-        notHome ? "hidden" : "flex"
-      } relative w-[300px] max-[1024px]:w-[150px] max-[700px]:hidden`}
+      className={`flex flex-col relative w-[300px] max-[1024px]:w-[150px] max-[700px]:hidden`}
     >
       <div
         className={`flex flex-col fixed left-0 h-full w-[250px] max-[1024px]:w-[100px] max-[700px]:hidden bg-black p-6`}
