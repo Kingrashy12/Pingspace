@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate, useLocation } from "@solidjs/router";
-import { Account, Login, People, Register } from "./pages";
+import { Account, Chat, Login, People, Register } from "./pages";
 import "./App.css";
 import { createEffect } from "solid-js";
 import { useToast } from "./libs/components/ToastContainer";
@@ -27,6 +27,7 @@ function App() {
         <Route path="/login" component={<Login />} />
         <Route path="/register" component={<Register />} />
         <Route path="/profile" component={<Account />} />
+        <Route path="/chat" component={<Chat />} />
       </Routes>
       {path.pathname === "/login" ? "" : <BottomNav />}
     </div>
