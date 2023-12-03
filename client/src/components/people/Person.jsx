@@ -3,6 +3,7 @@ import { placeholder } from "../../assets";
 import { useAuth } from "../../state/auth";
 import { createChat } from "../../helper/post";
 import { useToast } from "../../libs/components/ToastContainer";
+import { useNavigate } from "@solidjs/router";
 
 const Person = ({ user }) => {
   const [onlineStatus, setOnlineStatus] = createSignal(
@@ -11,6 +12,7 @@ const Person = ({ user }) => {
   const [chatData, setChatData] = createSignal([]);
   const { state } = useAuth();
   const { showToast } = useToast();
+  const navigate = useNavigate();
 
   // Event listener to update online status when it changes
   const handleOnlineStatusChange = () => {
@@ -34,7 +36,7 @@ const Person = ({ user }) => {
     const data = await createChat(senderId, receiverId);
     setChatData(data);
     if (chatData()) {
-      showToast("info", "Chat already exits");
+      // showToast("info", "Chat already exits");
     }
   }
 
