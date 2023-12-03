@@ -2,9 +2,9 @@ import { Routes, Route, useNavigate, useLocation } from "@solidjs/router";
 import { Account, Login, People, Register } from "./pages";
 import "./App.css";
 import { createEffect } from "solid-js";
-import useAuth from "./state/auth";
 import { useToast } from "./libs/components/ToastContainer";
 import { BottomNav, SideNav } from "./components";
+import { useAuth } from "./state/auth";
 
 function App() {
   const { actions, state } = useAuth();

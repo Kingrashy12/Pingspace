@@ -2,8 +2,8 @@ import React from "react";
 import { FaSolidMessage } from "solid-icons/fa";
 import SideNavLinks from "../hrefIcon/SideNavLinks";
 import { FiLogOut } from "solid-icons/fi";
-import useAuth from "../../state/auth";
 import { useLocation } from "@solidjs/router";
+import { useAuth } from "../../state/auth";
 
 const SideNav = () => {
   const { actions } = useAuth();
@@ -24,7 +24,7 @@ const SideNav = () => {
         <SideNavLinks />
         <div
           title="Logout"
-          onClick={() => actions.logout()}
+          onClick={() => actions.logOut()}
           class="flex gap-2 absolute bottom-5 left-2 items-center p-3 rounded-[8px] text-white hover:bg-neutral-800 cursor-pointer"
         >
           <FiLogOut size={25} />

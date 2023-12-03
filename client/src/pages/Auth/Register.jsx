@@ -4,8 +4,8 @@ import { Button, Input, PasswordInput } from "../../libs";
 import { FaSolidMessage } from "solid-icons/fa";
 import { PingLogo } from "../../components";
 import { Link, useLocation, useNavigate } from "@solidjs/router";
-import useAuth from "../../state/auth";
 import { pageName } from "../../libs/functions/functions";
+import { useAuth } from "../../state/auth";
 
 const Register = () => {
   createEffect(() => {

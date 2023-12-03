@@ -3,7 +3,7 @@ import { userdata } from "../../constant/user";
 import Person from "./Person";
 import useUsers from "../../state/users";
 import { CenterLoader } from "../../libs";
-import useAuth from "../../state/auth";
+import { useAuth } from "../../state/auth";
 
 const PeoplesFeed = () => {
   const { state, isLoading } = useUsers();
@@ -15,7 +15,7 @@ const PeoplesFeed = () => {
   return (
     <div className="flex flex-col relative w-full h-full max-[700px]:pb-[5rem] overflow-y-auto mt-8 max-[700px]:hide-scroll">
       <div className="flex flex-col gap-3 w-full relative">
-        {state().users.map((user, index) => (
+        {filteredUsers?.map((user, index) => (
           <>
             {isLoading() ? (
               <CenterLoader />

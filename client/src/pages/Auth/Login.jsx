@@ -1,9 +1,9 @@
 import React from "react";
 import { createEffect, createSignal } from "solid-js";
 import { Button, Input, PasswordInput } from "../../libs";
-import useAuth from "../../state/auth";
 import { pageName } from "../../libs/functions/functions";
 import { useNavigate } from "@solidjs/router";
+import { useAuth } from "../../state/auth";
 
 const Login = () => {
   createEffect(() => {
@@ -11,7 +11,7 @@ const Login = () => {
   });
 
   const { state, actions, Loading } = useAuth();
-  const [isLoading, setIsLoading] = createSignal(Loading);
+  // const [isLoading, setIsLoading] = createSignal(Loading);
 
   const [authData, setAuthData] = createSignal({
     email: "",
@@ -71,12 +71,12 @@ const Login = () => {
             Don't have an account?
           </p>
           <Button
-            text={isLoading() ? "Loading..." : "Login"}
+            text="Login"
             onClick={login}
             secondary
             fitContent
-            // disabled={isLoading()}
-            // isLoading={Loading()}
+            disabled={Loading()}
+            isLoading={Loading()}
           />
         </div>
       </div>
