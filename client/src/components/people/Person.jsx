@@ -1,10 +1,16 @@
 import { createSignal, onCleanup } from "solid-js";
 import { placeholder } from "../../assets";
+import { useAuth } from "../../state/auth";
+import { createChat } from "../../helper/post";
+import { useToast } from "../../libs/components/ToastContainer";
 
 const Person = ({ user }) => {
   const [onlineStatus, setOnlineStatus] = createSignal(
     navigator.onLine ? "online" : "offline"
   );
+  const [chatData, setChatData] = createSignal([]);
+  const { state } = useAuth();
+  const { showToast } = useToast();
 
   // Event listener to update online status when it changes
   const handleOnlineStatusChange = () => {
@@ -21,8 +27,22 @@ const Person = ({ user }) => {
     window.removeEventListener("offline", handleOnlineStatusChange);
   });
 
+  const senderId = state().id;
+  const receiverId = user._id;
+
+  async function Chat() {
+    const data = await createChat(senderId, receiverId);
+    setChatData(data);
+    if (chatData()) {
+      showToast("info", "Chat already exits");
+    }
+  }
+
   return (
-    <div className="flex gap-3 items-center cursor-pointer select-none p-3 max-[700px]:p-[8px] hover:bg-neutral-900 rounded-[9px]">
+    <div
+      onClick={Chat}
+      className="flex gap-3 items-center cursor-pointer select-none p-3 max-[700px]:p-[8px] hover:bg-neutral-900 rounded-[9px]"
+    >
       <img
         src={placeholder}
         alt="User photo"

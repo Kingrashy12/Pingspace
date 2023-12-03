@@ -6,15 +6,15 @@ export const CreateChat = async (req, res) => {
     const chat = await ChatModel.findOne({
       members: { $all: [senderId, receiverId] },
     });
-    if (chat) return res.status(200).json(chat);
-
-    const newChat = new ChatModel({
-      members: [senderId, receiverId],
-    });
-
-    const response = await newChat.save();
-
-    res.status(201).json(response);
+    if (chat) {
+      return res.status(200).json(chat);
+    } else {
+      const newChat = new ChatModel({
+        members: [senderId, receiverId],
+      });
+      const response = await newChat.save();
+      res.status(201).json(response);
+    }
   } catch (error) {
     console.log({ error: error.message });
     res.status(500).json({ error: error.message });

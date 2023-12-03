@@ -1,6 +1,6 @@
+// import { createRef } from "react";
 // import { IoAddCircle } from "solid-icons/io";
 // import { createSignal } from "solid-js";
-// // import {crea} from 'solid-js/web'
 
 // const UpdatedProfile = () => {
 //   const imgRef = createRef();
