@@ -47,6 +47,8 @@ const AuthProvider = (props) => {
         profile: user?.profile,
         userLoaded: true,
       }));
+    } else {
+      navigate("/login");
     }
   };
 
@@ -66,6 +68,7 @@ const AuthProvider = (props) => {
     }));
 
     showToast("info", "Logged out");
+    navigate("/login");
   };
 
   const login = async (authData) => {
@@ -92,7 +95,9 @@ const AuthProvider = (props) => {
           userLoaded: true,
           loginStatus: "success",
         }));
-        navigate("/people"); // Use navigate to redirect
+        if (state().token) {
+          navigate("/people"); // Use navigate to redirect
+        }
       }
       return response?.data;
     } catch (error) {
@@ -107,6 +112,45 @@ const AuthProvider = (props) => {
     }
   };
 
+  const register = async (authData) => {
+    try {
+      setLoading(true);
+      const response = await axios.post(`${BASE_URL}/auth/new`, {
+        name: authData().name,
+        email: authData().email,
+        password: authData().password,
+        username: authData().username,
+      });
+
+      localStorage.setItem("pingspace-token", response?.data);
+      const token = response.data;
+      if (token) {
+        const user = decodeToken(token);
+        showToast("success", `Welcome ${user.username}`);
+        setState((prev) => ({
+          ...prev,
+          token: token,
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          username: user.username,
+          profile: user.profile,
+          userLoaded: true,
+          // rStatus: "success",
+        }));
+        if (state().token) {
+          navigate("/people"); // Use navigate to redirect
+        }
+      }
+      return response?.data;
+    } catch (error) {
+      console.error(error);
+      showToast("error", error.response?.data || error.message || error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const contextValue = {
     state,
     Loading,
@@ -114,6 +158,7 @@ const AuthProvider = (props) => {
       login,
       loadUser,
       logOut,
+      register,
     },
   };
 

@@ -4,6 +4,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import AuthRoute from "./route/Auth.js";
 import UserRoute from "./route/User.js";
+import ChatRoute from "./route/Chat.js";
+import MessageRoute from "./route/Message.js";
 import { ConnectDB } from "./utils/ConnectDb.js";
 
 dotenv.config();
@@ -17,6 +19,8 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 app.use("/auth", AuthRoute);
 app.use("/users", UserRoute);
+app.use("/chat", ChatRoute);
+app.use("/message", MessageRoute);
 
 app.get("/", (req, res) => {
   res.send("Home");

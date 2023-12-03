@@ -18,7 +18,7 @@ function App() {
     } else {
       navigate("/login");
     }
-  });
+  }, [state().token]);
 
   return (
     <div className="w-full h-full relative">

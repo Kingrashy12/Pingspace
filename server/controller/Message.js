@@ -1,7 +1,7 @@
 import MessageModel from "../model/Message.js";
 
 export const createMessage = async (req, res) => {
-  const { chatId, senderId, text, image, url } = req.body;
+  const { chatId, senderId, text, image } = req.body;
   try {
     if (image) {
       const uploadRes = await cloudinary.uploader.upload(image, {

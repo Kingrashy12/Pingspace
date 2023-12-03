@@ -11,8 +11,7 @@ const Register = () => {
   createEffect(() => {
     document.title = `${pageName()} | Pingspace`;
   });
-  const { state, actions } = useAuth();
-  const isLoading = state().regStatus === "loading";
+  const { state, actions, Loading } = useAuth();
   const navigate = useNavigate();
 
   const [authData, setAuthData] = createSignal({
@@ -32,6 +31,20 @@ const Register = () => {
   function saveUser() {
     actions.register(authData);
   }
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      saveUser();
+    }
+  };
+
+  createEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  });
 
   return (
     <div className="flex flex-col w-full h-auto relative p-20 items-center justify-center">
@@ -75,8 +88,8 @@ const Register = () => {
             </p>
           </Link>
           <Button
-            isLoading={isLoading}
-            disabled={isLoading}
+            isLoading={Loading}
+            disabled={Loading}
             text="Sign up"
             onClick={saveUser}
             secondary
