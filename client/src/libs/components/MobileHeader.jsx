@@ -1,4 +1,3 @@
-import React from "react";
 import { FaSolidArrowLeft } from "solid-icons/fa";
 
 const MobileHeader = ({ onClick, hide }) => {

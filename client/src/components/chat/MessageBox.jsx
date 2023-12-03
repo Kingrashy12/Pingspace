@@ -1,4 +1,3 @@
-import React from "react";
 import { AiFillAudio } from "solid-icons/ai";
 import { BsEmojiSmileFill } from "solid-icons/bs";
 import { FaSolidFileImage } from "solid-icons/fa";

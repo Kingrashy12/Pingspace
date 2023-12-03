@@ -1,4 +1,3 @@
-import React from "react";
 import { BsThreeDotsVertical } from "solid-icons/bs";
 import { FaSolidArrowLeft } from "solid-icons/fa";
 import { placeholder } from "~/assets";

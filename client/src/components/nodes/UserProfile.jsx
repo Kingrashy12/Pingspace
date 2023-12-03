@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "solid-start";
 
 const UserProfile = ({ closeViewProfile, setOpenUpdateProfile, viewPhoto }) => {

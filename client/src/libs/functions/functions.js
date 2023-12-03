@@ -1,7 +1,5 @@
 import { useLocation } from "@solidjs/router";
 import { jwtDecode } from "jwt-decode";
-import { Bob, Jane, John, KFX } from "~/assets";
-import { generateUniqueId } from "./genId";
 
 export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);

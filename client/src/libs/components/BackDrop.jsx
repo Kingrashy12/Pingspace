@@ -1,5 +1,3 @@
-import React from "react";
-
 const BackDrop = ({ node, onClick }) => {
   return (
     <div

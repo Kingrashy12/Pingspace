@@ -1,4 +1,3 @@
-import React from "react";
 import { FaSolidMessage } from "solid-icons/fa";
 import SideNavLinks from "../hrefIcon/SideNavLinks";
 import { FiLogOut } from "solid-icons/fi";

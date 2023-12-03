@@ -1,4 +1,3 @@
-import React from "react";
 import CurrentHero from "./CurrentHero";
 import { useParams } from "solid-start";
 import { userdata } from "~/constant/user";

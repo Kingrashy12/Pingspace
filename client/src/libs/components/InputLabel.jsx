@@ -1,5 +1,3 @@
-import React from "react";
-
 const InputLabel = ({ text }) => {
   return <p className="font-kanit text-white">{text}</p>;
 };

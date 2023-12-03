@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineLoading3Quarters } from "solid-icons/ai";
 import "../styles/index.css";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { CurrentId, RightNav, SideNav } from "~/components";
 
 const CurrentUser = () => {

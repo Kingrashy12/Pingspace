@@ -1,4 +1,3 @@
-import React from "react";
 import { createEffect, createSignal } from "solid-js";
 import { ChatContianer, ChatConvert, ChatFeed, SideNav } from "~/components";
 import { pageName } from "~/libs/functions/functions";

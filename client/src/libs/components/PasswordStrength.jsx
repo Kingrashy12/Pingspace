@@ -1,4 +1,3 @@
-import React from "react";
 import { createEffect, createSignal } from "solid-js";
 
 const PasswordStrength = ({ password }) => {

@@ -1,4 +1,3 @@
-import React from "react";
 import { placeholder } from "../../../assets";
 import { decodedUser, formatDate } from "../../../libs/functions/functions";
 import { BackDrop, BottomDivider, Button } from "../../../libs";

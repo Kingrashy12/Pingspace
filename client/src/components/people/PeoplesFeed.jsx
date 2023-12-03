@@ -1,4 +1,3 @@
-import React from "react";
 import Person from "./Person";
 import useUsers from "../../state/users";
 import { CenterLoader } from "../../libs";

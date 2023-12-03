@@ -1,4 +1,3 @@
-import React from "react";
 import { createEffect, createSignal } from "solid-js";
 import { useNavigate } from "solid-start";
 import { Button, Input, PasswordInput } from "~/libs";

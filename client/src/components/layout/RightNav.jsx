@@ -1,5 +1,3 @@
-import React from "react";
-
 const RightNav = () => {
   return (
     <div className="flex relative w-[280px] max-[1024px]:w-[150px] max-[800px]:hidden">

@@ -1,4 +1,3 @@
-import React from "react";
 import Hero from "./user/Hero";
 import Friends from "./user/Friends";
 

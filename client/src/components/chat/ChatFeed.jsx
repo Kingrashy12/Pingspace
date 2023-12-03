@@ -1,4 +1,3 @@
-import React from "react";
 import { createEffect, createSignal, onCleanup } from "solid-js";
 import { getUserById, getUserChats } from "../../helper/fetch";
 import { useAuth } from "../../state/auth";

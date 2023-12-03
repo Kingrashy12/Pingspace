@@ -1,4 +1,3 @@
-import React from "react";
 import { BsPeopleFill } from "solid-icons/bs";
 import { FaSolidLayerGroup, FaSolidMessage } from "solid-icons/fa";
 import { CgProfile } from "solid-icons/cg";

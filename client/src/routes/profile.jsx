@@ -1,4 +1,3 @@
-import React from "react";
 import { createEffect } from "solid-js";
 import { AccountFeed, RightNav, SideNav } from "~/components";
 import { pageName } from "~/libs/functions/functions";
