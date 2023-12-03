@@ -1,6 +1,8 @@
 import React from "react";
+import { useParams } from "solid-start";
 
 const UserProfile = ({ closeViewProfile, setOpenUpdateProfile, viewPhoto }) => {
+  const profilePage = useParams();
   return (
     <div
       onClick={(e) => {
@@ -17,14 +19,20 @@ const UserProfile = ({ closeViewProfile, setOpenUpdateProfile, viewPhoto }) => {
       >
         View Profile
       </p>
-      <div className="h-[1px] bg-neutral-400 w-full" />
+      <div
+        className={`h-[1px] ${
+          profilePage ? "hidden" : "block"
+        } bg-neutral-400 w-full`}
+      />
       <p
         onClick={(e) => {
           e.stopPropagation();
           setOpenUpdateProfile(true);
           //   closeViewProfile(false);
         }}
-        className="text-white font-kanit p-3 cursor-pointer hover:bg-slate-800 w-full rounded-b-[9px]"
+        className={`text-white ${
+          profilePage ? "hidden" : "block"
+        } font-kanit p-3 cursor-pointer hover:bg-slate-800 w-full rounded-b-[9px]`}
       >
         Update Profile
       </p>

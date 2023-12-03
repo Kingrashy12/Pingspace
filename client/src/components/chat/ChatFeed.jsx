@@ -1,69 +1,93 @@
 import React from "react";
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, onCleanup } from "solid-js";
 import { getUserById, getUserChats } from "../../helper/fetch";
 import { useAuth } from "../../state/auth";
 import { placeholder } from "../../assets";
-import { CenterLoader } from "../../libs";
+import { CenterLoader, MobileHeader } from "../../libs";
 import ChatItem from "./ChatItem";
+import { chatdata } from "~/constant/chat";
+import { useNavigate } from "solid-start";
 
-const ChatFeed = () => {
+const ChatFeed = ({ setChatState, chat }) => {
   const { state } = useAuth();
-  const [chats, setChats] = createSignal([]);
+  const [chats, setChats] = createSignal(chatdata);
+  const [stateChat, setStateChat] = createSignal([]);
   const [chatUser, setChatUser] = createSignal([]);
+  const navigate = useNavigate();
   const userId = state().id;
 
   createEffect(() => {
-    const fetchChats = async () => {
-      const data = await getUserChats(userId);
-      setChats(data);
-    };
+    const fetchDataInterval = setInterval(() => {
+      if (chat().length !== 0) {
+        setStateChat(chat());
+      }
+    }, 900);
 
-    fetchChats();
+    return () => clearInterval(fetchDataInterval);
+  }, []);
 
-    const intervalId = setInterval(fetchChats, 3000);
+  const show = stateChat().length === 0;
 
-    onCleanup(() => clearInterval(intervalId));
-  }, [userId]);
+  // createEffect(() => {
+  //   const fetchChats = async () => {
+  //     const data = await getUserChats(userId);
+  //     setChats(data);
+  //   };
 
-  createEffect(() => {
-    const getChatUsers = async () => {
-      const latestChats = chats();
+  //   fetchChats();
 
-      const users = await Promise.all(
-        latestChats.map(async (chat) => {
-          const otherUserId = chat.people.find((id) => id !== userId);
-          if (otherUserId) {
-            try {
-              return await getUserById(otherUserId);
-            } catch (error) {
-              console.log(error);
-              return null;
-            }
-          }
-          return null;
-        })
-      );
+  //   const intervalId = setInterval(fetchChats, 3000);
 
-      const validUsers = users.filter((user) => user !== null);
-      setChatUser(validUsers);
-    };
+  //   onCleanup(() => clearInterval(intervalId));
+  // }, [userId]);
 
-    getChatUsers();
+  // createEffect(() => {
+  //   const getChatUsers = async () => {
+  //     const latestChats = chats();
 
-    const intervalId = setInterval(getChatUsers, 3000);
+  //     const users = await Promise.all(
+  //       latestChats.map(async (chat) => {
+  //         const otherUserId = chat.people.find((id) => id !== userId);
+  //         if (otherUserId) {
+  //           try {
+  //             return await getUserById(otherUserId);
+  //           } catch (error) {
+  //             console.log(error);
+  //             return null;
+  //           }
+  //         }
+  //         return null;
+  //       })
+  //     );
 
-    onCleanup(() => clearInterval(intervalId));
-  }, [userId]);
+  //     const validUsers = users.filter((user) => user !== null);
+  //     setChatUser(validUsers);
+  //   };
+
+  //   getChatUsers();
+
+  //   const intervalId = setInterval(getChatUsers, 3000);
+
+  //   onCleanup(() => clearInterval(intervalId));
+  // }, [userId]);
 
   return (
-    <div className="relative w-[300px] max-[700px]:w-full flex flex-col h-full">
-      <div className="bg-neutral-900 flex-col gap-3 flex max-[700px]:w-full max-[700px]:relative fixed w-[250px] translate-x-[15.5rem] border-l border-r border-neutral-500 top-0/ left-0 h-full p-3 bottom-0">
-        {chatUser().map((user, index) => (
+    <div
+      className={`relative w-[300px] max-[800px]:w-full flex  ${
+        show ? "max-[800px]:flex" : "max-[800px]:hidden"
+      } flex-col h-full`}
+    >
+      <MobileHeader hide onClick={() => navigate(-1)} />
+
+      <div
+        className={`bg-neutral-900 max-[700px]:translate-y-10 flex-col gap-3 flex max-[800px]:w-full max-[1024px]:translate-x-[100px] fixed max-[700px]:translate-x-0 w-[250px] translate-x-[15.5rem] border-l border-r border-neutral-500 left-0 h-full p-3 bottom-0`}
+      >
+        {chats().map((user, index) => (
           //   <>
           //     {isLoading() ? (
           //       <CenterLoader />
           //     ) : (
-          <ChatItem user={user} />
+          <ChatItem user={user} setChat={setChatState} />
           //     )}
           //   </>
         ))}

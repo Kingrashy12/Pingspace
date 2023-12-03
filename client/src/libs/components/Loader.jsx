@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineLoading3Quarters } from "solid-icons/ai";
-import { FiLoader } from "solid-icons/fi";
+import "../styles/index.css";
 
 const Loader = ({ color, className }) => {
   return (

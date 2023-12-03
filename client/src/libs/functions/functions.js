@@ -1,5 +1,7 @@
 import { useLocation } from "@solidjs/router";
 import { jwtDecode } from "jwt-decode";
+import { Bob, Jane, John, KFX } from "~/assets";
+import { generateUniqueId } from "./genId";
 
 export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -17,6 +19,25 @@ export function decodeToken(token) {
   try {
     const user = jwtDecode(token);
     return user;
+  } catch (error) {
+    console.log("err decoding token", error);
+  }
+}
+
+export function decodedUser(token) {
+  try {
+    const user = jwtDecode(token);
+    if (user) {
+      const User = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        username: user.username,
+        profile: user.profile,
+        created: user.created,
+      };
+      return User;
+    }
   } catch (error) {
     console.log("err decoding token", error);
   }

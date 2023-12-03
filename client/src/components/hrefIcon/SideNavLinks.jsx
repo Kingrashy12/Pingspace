@@ -9,20 +9,20 @@ const SideNavLinks = () => {
   const path = useLocation();
   return (
     <div className="flex flex-col translate-y-20 gap-4">
-      <div
-        onClick={() => navigate("/people")}
+      <a
+        href="/"
         title="People"
         class={`flex gap-2 w-full items-center p-3 rounded-[8px] ${
-          path.pathname === "/people"
+          path.pathname === "/"
             ? "text-blue-600 bg-neutral-800"
             : "text-white bg-transparent"
         } hover:bg-neutral-800 cursor-pointer`}
       >
         <BsPeopleFill size={25} />
         <p className="font-poppins max-[1024px]:hidden">People</p>
-      </div>
-      <div
-        onClick={() => navigate("/chat")}
+      </a>
+      <a
+        href="/chat"
         title="Messages"
         class={`flex gap-2 w-full items-center p-3 rounded-[8px] ${
           path.pathname === "/chat"
@@ -32,10 +32,10 @@ const SideNavLinks = () => {
       >
         <FaSolidMessage size={25} />
         <p className="font-poppins max-[1024px]:hidden">Messages</p>
-      </div>
-      <div
+      </a>
+      <a
         title="Group"
-        onClick={() => navigate("/group")}
+        href="/group"
         class={`flex gap-2 w-full items-center p-3 rounded-[8px] ${
           path.pathname === "/group"
             ? "text-blue-600 bg-neutral-800"
@@ -44,9 +44,9 @@ const SideNavLinks = () => {
       >
         <FaSolidLayerGroup size={25} />
         <p className="font-poppins max-[1024px]:hidden">Group</p>
-      </div>
-      <div
-        onClick={() => navigate("/profile")}
+      </a>
+      <a
+        href="/profile"
         title="Profile"
         class={`flex gap-2 w-full items-center p-3 rounded-[8px] ${
           path.pathname === "/profile"
@@ -56,7 +56,7 @@ const SideNavLinks = () => {
       >
         <CgProfile size={25} />
         <p className="font-poppins max-[1024px]:hidden">Profile</p>
-      </div>
+      </a>
     </div>
   );
 };
