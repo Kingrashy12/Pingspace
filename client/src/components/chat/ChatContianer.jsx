@@ -26,7 +26,7 @@ const ChatContianer = ({ chat, setChatState }) => {
       {chat().length !== 0 ? (
         <div className="flex flex-col w-full h-full relative overflow-x-auto">
           <ChatHeader setChatState={setChatState} chat={chat()} />
-          <Messages chat={chat} />
+          <Messages chat={chat()} />
           <MessageBox />
         </div>
       ) : (

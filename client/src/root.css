@@ -87,3 +87,47 @@ body {
     overflow: hidden;
   }
 }
+
+.reciever {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+/* .sender {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+} */
+.sender {
+  position: relative;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+}
+.sender::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 11px;
+  transform: translateX(-3px);
+  background: rgb(115 115 115);
+  /* background: red; */
+  border-bottom-left-radius: 5px; /* Adjusted to match the height */
+  border-top-left-radius: 50px;
+  z-index: 1; /* Move the pseudo-element behind the content */
+}
+.reciever::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 11px;
+  transform: translateX(4px) translateY(18.3px);
+  background: rgb(37 99 235);
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 5px;
+  z-index: 1; /* Move the pseudo-element behind the content */
+}
