@@ -19,10 +19,6 @@ import { BottomNav } from "./components";
 export default function Root() {
   const location = useLocation();
 
-  const active = (path) =>
-    path == location.pathname
-      ? "border-sky-600"
-      : "border-transparent hover:border-sky-600";
   return (
     <Html lang="en">
       <Head>
@@ -33,11 +29,11 @@ export default function Root() {
       <Body>
         <Suspense>
           <ErrorBoundary>
-            <ToastProvider>
-              <Routes>
+            <Routes>
+              <ToastProvider>
                 <FileRoutes />
-              </Routes>
-            </ToastProvider>
+              </ToastProvider>
+            </Routes>
           </ErrorBoundary>
         </Suspense>
         {location.pathname === "/login" ? "" : <BottomNav />}
