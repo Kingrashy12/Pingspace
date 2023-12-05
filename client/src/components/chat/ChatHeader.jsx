@@ -1,8 +1,11 @@
 import { BsThreeDotsVertical } from "solid-icons/bs";
 import { FaSolidArrowLeft } from "solid-icons/fa";
 import { placeholder } from "~/assets";
+import { useChat } from "~/context/Chats";
 
-const ChatHeader = ({ chat, setChatState }) => {
+const ChatHeader = ({ chat }) => {
+  const { closeChat } = useChat();
+
   const name = "Rapheal Chizitere";
   return (
     <div class="flex items-center gap-3 max-[1024px]:w-[675px] max-[800px]:w-[610px] max-[700px]:top-0 max-[700px]:w-full fixed bg-black border-b border-neutral-600 p-3 w-[900px] rounded-t-[9px] h-auto">
@@ -10,7 +13,7 @@ const ChatHeader = ({ chat, setChatState }) => {
         size={20}
         color="#fff"
         class="cursor-pointer"
-        onclick={() => setChatState([])}
+        onclick={closeChat}
       />
       <img
         src={chat?.image || placeholder}

@@ -29,11 +29,11 @@ export default function Root() {
       <Body>
         <Suspense>
           <ErrorBoundary>
-            <Routes>
-              <ToastProvider>
+            <ToastProvider>
+              <Routes>
                 <FileRoutes />
-              </ToastProvider>
-            </Routes>
+              </Routes>
+            </ToastProvider>
           </ErrorBoundary>
         </Suspense>
         {location.pathname === "/login" ? "" : <BottomNav />}

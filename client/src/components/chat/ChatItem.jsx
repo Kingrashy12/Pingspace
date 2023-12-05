@@ -1,11 +1,13 @@
 import { placeholder } from "../../assets";
 import { createSignal } from "solid-js";
 import { MessageIcon } from "../../libs";
+import { useChat } from "~/context/Chats";
 
-const ChatItem = ({ user, setChat }) => {
+const ChatItem = ({ user }) => {
+  const { viewChat } = useChat();
   return (
     <div
-      onclick={() => setChat(user)}
+      onclick={() => viewChat(user)}
       className="flex items-center gap-3 p-2 rounded-[8px] hover:bg-neutral-700 cursor-pointer"
     >
       <img

@@ -1,4 +1,9 @@
-import { createEffect, createSignal, onCleanup } from "solid-js";
+import {
+  createEffect,
+  createRenderEffect,
+  createSignal,
+  onCleanup,
+} from "solid-js";
 import { getUserById, getUserChats } from "../../helper/fetch";
 import { useAuth } from "../../state/auth";
 import { placeholder } from "../../assets";
@@ -6,26 +11,18 @@ import { CenterLoader, MobileHeader } from "../../libs";
 import ChatItem from "./ChatItem";
 import { chatdata } from "~/constant/chat";
 import { useNavigate } from "solid-start";
+import { useChat } from "~/context/Chats";
 
 const ChatFeed = ({ setChatState, chat }) => {
   const { state } = useAuth();
-  const [chats, setChats] = createSignal(chatdata);
+  // const [chats, setChats] = createSignal(chatdata);
   const [stateChat, setStateChat] = createSignal([]);
   const [chatUser, setChatUser] = createSignal([]);
   const navigate = useNavigate();
   const userId = state().id;
 
-  createEffect(() => {
-    const fetchDataInterval = setInterval(() => {
-      if (chat().length !== 0) {
-        setStateChat(chat());
-      }
-    }, 900);
-
-    return () => clearInterval(fetchDataInterval);
-  }, []);
-
-  const show = stateChat().length === 0;
+  const { chats } = useChat();
+  const show = chats().chat?.length === 0;
 
   // createEffect(() => {
   //   const fetchChats = async () => {
@@ -81,12 +78,12 @@ const ChatFeed = ({ setChatState, chat }) => {
       <div
         className={`bg-neutral-900 max-[700px]:translate-y-10 flex-col gap-3 flex max-[800px]:w-full max-[1024px]:translate-x-[100px] fixed max-[700px]:translate-x-0 w-[250px] translate-x-[15.5rem] border-l border-r border-neutral-500 left-0 h-full p-3 bottom-0`}
       >
-        {chats().map((user, index) => (
+        {chatdata.map((user, index) => (
           //   <>
           //     {isLoading() ? (
           //       <CenterLoader />
           //     ) : (
-          <ChatItem user={user} setChat={setChatState} />
+          <ChatItem user={user} />
           //     )}
           //   </>
         ))}
