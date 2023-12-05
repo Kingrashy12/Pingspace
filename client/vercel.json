@@ -7,7 +7,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/root.jsx"
+      "dest": "/index.jsx"
     }
   ],
   "builds": [
