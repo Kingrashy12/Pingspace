@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/root.jsx"
+    }
+  ],
+  "builds": [
+    {
+      "src": "src/",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ]
+}
