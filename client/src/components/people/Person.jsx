@@ -45,7 +45,7 @@ const Person = ({ user }) => {
   return (
     <div
       onClick={() => {
-        Chat();
+        // Chat();
         navigate(`/user/${user.id}`);
       }}
       className="flex gap-3 items-center cursor-pointer select-none p-3 max-[700px]:p-[8px] hover:bg-neutral-900 rounded-[9px]"

@@ -3,9 +3,11 @@ import SideNavLinks from "../hrefIcon/SideNavLinks";
 import { FiLogOut } from "solid-icons/fi";
 import { useLocation } from "@solidjs/router";
 import { useAuth } from "../../state/auth";
+import { useToast } from "~/libs/components/ToastContainer";
 
 const SideNav = () => {
   const { actions } = useAuth();
+  const { showToast } = useToast();
 
   return (
     <div
@@ -23,10 +25,11 @@ const SideNav = () => {
         <SideNavLinks />
         <div
           title="Logout"
-          onClick={(e) => {
-            e.stopPropagation();
-            actions.logOut();
-          }}
+          // onClick={(e) => {
+          //   e.stopPropagation();
+          //   actions.logOut();
+          // }}
+          onClick={() => showToast("info", "Not available on beta")}
           class="flex gap-2 absolute bottom-5 left-2 items-center p-3 rounded-[8px] text-white hover:bg-neutral-800 cursor-pointer"
         >
           <FiLogOut size={25} />

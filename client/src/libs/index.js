@@ -11,3 +11,4 @@ export { default as BottomDivider } from "./components/BottomDivider";
 export { default as BackDrop } from "./components/BackDrop";
 export { default as MessageIcon } from "./components/MessageIcon";
 export { default as MobileHeader } from "./components/MobileHeader";
+export { default as StatusDot } from "./components/StatusDot";

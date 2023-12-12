@@ -41,6 +41,7 @@ const Hero = () => {
           </p>
         </div>
       </div>
+      <p class="text-white font-[400] font-poppins text-[13px]">{user.desc}</p>
       <div className="flex mt-5 items-center gap-5">
         <div className="flex flex-col items-center text-neutral-500">
           <BiRegularCalendar size={25} />

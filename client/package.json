@@ -19,7 +19,8 @@
     "jwt-decode": "^4.0.0",
     "solid-icons": "^1.1.0",
     "solid-js": "^1.8.5",
-    "solid-start": "^0.3.10"
+    "solid-start": "^0.3.10",
+    "solid-start-vercel": "^0.3.10"
   },
   "engines": {
     "node": "18"

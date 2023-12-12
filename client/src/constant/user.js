@@ -37,7 +37,7 @@ export const userdata = [
     username: "BJ-Banks",
     desc: "Hi, I'm using pingspace",
     image: Bob,
-    status: "offline",
+    status: "online",
     created: new Date(),
     friends: 210,
     id: generateUniqueId(),
